@@ -92,14 +92,17 @@ function resetFields() {
     });
 }
 
-function clearHistory() {
-    document.getElementById('historique').innerHTML = '';
-}
+document.getElementById("clear-history").addEventListener("click", function() {
+    const historyContent = document.getElementById("history");
+    historyContent.innerHTML = ""; // Efface le contenu de l'historique
+});
+
 
 function addToHistorique(operation) {
-    const historiqueDiv = document.getElementById('historique');
-    const newEntry = document.createElement('p');
+    const historiqueDiv = document.getElementById('history'); // Correction de l'identifiant
+    const newEntry = document.createElement('div'); // Changer en <div> pour correspondre au style existant
     newEntry.textContent = operation;
+    newEntry.className = 'history-item'; // Ajout de la classe pour le style
     historiqueDiv.insertBefore(newEntry, historiqueDiv.firstChild);
     
     // Limiter l'historique à 10 entrées
@@ -115,7 +118,7 @@ function showError(message) {
     
     // Réinitialiser la couleur après 3 secondes
     setTimeout(() => {
-        resultat.style.color = 'var(--secondary-color)';
+        resultat.style.color = 'var(--secondary-color)'; // Assurez-vous que cette variable CSS est définie
     }, 3000);
 }
 
@@ -142,6 +145,9 @@ document.addEventListener('keydown', (e) => {
             break;
         case 'Escape':
             resetFields();
+            break;
+        case 'c': // Pour la touche 'c', efface l'historique
+            clearHistory();
             break;
     }
 });

@@ -107,157 +107,246 @@ input[type="number"]:focus {
 }
 
 .buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
 }
 
-.buttons button {
-    padding: 15px;
-    font-size: 20px;
-    border-radius: 12px;
-    border: none;
+.operator {
     background-color: var(--primary-color);
-    color: white;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    flex: 1;
+    margin: 0 5px;
 }
 
-.buttons button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.buttons button.active {
+.operator:hover {
     background-color: var(--secondary-color);
-    transform: scale(0.95);
+    transform: translateY(-3px);
+}
+
+.operator:active {
+    transform: translateY(1px);
 }
 
 .action-buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 15px;
+    margin-top: 10px;
 }
 
 .calculate-btn {
     background-color: var(--secondary-color) !important;
-    padding: 15px !important;
+    padding: 15px 30px !important;
     font-size: 18px !important;
+    border-radius: 50px !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.calculate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.calculate-btn:active {
+    transform: translateY(1px);
 }
 
 .reset-btn {
     background-color: var(--danger-color) !important;
-    padding: 15px !important;
+    padding: 15px 30px !important;
     font-size: 18px !important;
+    border-radius: 50px !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
 }
 
-.result-section {
-    margin: 20px 0;
-    padding: 15px;
-    border-radius: 12px;
-    background-color: var(--input-background);
-    min-height: 60px;
+.reset-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(244, 67, 54, 0.4);
 }
 
-.result {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--secondary-color);
-    text-align: center;
+.reset-btn:active {
+    transform: translateY(1px);
 }
 
-.history-section {
-    margin-top: 20px;
-    border-top: 2px solid var(--input-background);
-    padding-top: 20px;
+.calculate-btn, .reset-btn {
+    position: relative;
+    overflow: hidden;
 }
 
-.history-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
+.calculate-btn::after, .reset-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
 }
 
-.history-header h3 {
-    font-size: 18px;
-    color: var(--text-color);
+.calculate-btn:hover::after, .reset-btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+@media (max-width: 480px) {
+    .action-buttons {
+        gap: 10px;
+    }
+
+    .calculate-btn, .reset-btn {
+        padding: 12px 20px !important;
+        font-size: 16px !important;
+    }
+}
+
+
+/* Nouveau conteneur pour le bouton */
+.action-buttons {
+    display: flex; /* Utiliser Flexbox pour aligner les boutons */
+    justify-content: flex-end; /* Aligner le bouton à droite */
+    margin-top: 10px; /* Espace au-dessus du bouton */
 }
 
 .clear-history {
-    background-color: transparent;
-    border: 1px solid var(--danger-color);
-    color: var(--danger-color);
-    padding: 8px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.3s ease;
+    background-color: #ff4c4c; /* Couleur rouge */
+    color: #fff; /* Couleur du texte */
+    padding: 10px 15px; /* Ajustement du padding */
+    border: none;
+    border-radius: 25px; /* Bords arrondis */
+    font-size: 16px; /* Augmenter légèrement la taille de la police pour la lisibilité */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajout d'une ombre pour une légère profondeur */
+    transition: background-color 0.3s, transform 0.3s; /* Transition pour un effet au survol */
 }
 
 .clear-history:hover {
-    background-color: var(--danger-color);
-    color: white;
+    background-color: #e04343; /* Une teinte de rouge plus foncée au survol */
+    transform: translateY(-2px); /* Légère élévation au survol */
+}
+
+
+.history-content p {
+    margin: 5px 0;
+}
+.result {
+    font-size: 32px; /* Taille de la police pour le résultat */
+    font-weight: bold; /* Gras pour le résultat */
+    color: var(--primary-color); /* Couleur du texte */
+    margin: 20px 0; /* Marges autour du résultat */
+    padding: 10px; /* Espacement intérieur */
+    background-color: #f0f8ff; /* Couleur de fond légère pour le résultat */
+    border: 2px solid var(--primary-color); /* Bordure */
+    border-radius: 10px; /* Bordures arrondies */
+    text-align: right; /* Alignement à droite pour le résultat */
+}
+
+
+/* 1 */
+.history-section {   
+    margin-top: 20px;
+    border-top: 2px solid var(--input-background);
+    padding-top: 20px;
+    background-color: #262626; /* Couleur de fond pour le mode sombre */
+    color: #ffffff; /* Couleur du texte pour le mode sombre */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.history-header {
+    display: flex; /* Flexbox pour aligner les éléments */
+    justify-content: space-between; /* Espace entre les éléments */
+    align-items: center; /* Centrage vertical */
+    margin-bottom: 15px; /* Marges inférieures */
+}
+
+.history-header h3 {
+    font-size: 18px; /* Taille de la police pour le titre de l'historique */
+    color: var(--text-color); /* Couleur du texte */
 }
 
 .history-content {
     max-height: 200px;
     overflow-y: auto;
-    padding-right: 10px;
-}
-
-.history-content p {
-    padding: 10px;
-    margin: 5px 0;
+    margin-top: 10px;
+    background-color: #333; /* Couleur de fond pour le contenu historique */
+    border: 1px solid var(--input-background);
     border-radius: 8px;
-    background-color: var(--input-background);
-    font-size: 14px;
-}
-
-/* Scrollbar styles */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--input-background);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 4px;
-}
-
-/* Animation pour les résultats */
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .history-content p {
-    animation: slideIn 0.3s ease-out;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #444; /* Couleur de fond pour chaque entrée */
+    border: 1px solid var(--input-background);
+    border-radius: 8px;
+    color: #ffffff; /* Couleur du texte pour chaque entrée */
+    transition: background-color 0.3s;
 }
 
-/* Media queries pour la responsivité */
-@media (max-width: 480px) {
-    .calculator {
-        padding: 20px;
-    }
+.history-content p:hover {
+    background-color: #555; /* Couleur de fond au survol */
+}
+.historique-container {
+    margin: 20px 0;
+}
 
-    input[type="number"] {
-        padding: 12px;
-        font-size: 16px;
-    }
+.historique-container h2 {
+    color: var(--text-color);
+}
 
-    .buttons button {
-        padding: 12px;
-        font-size: 18px;
-    }
+.action-buttons {
+    display: flex; /* Utiliser Flexbox pour aligner les boutons */
+    justify-content: flex-end; /* Aligner les boutons à droite */
+    margin-top: 15px; /* Espace au-dessus */
+    width: 100%; /* Prend toute la largeur du parent */
+}
+
+button {
+    margin: 10px 0;
+    padding: 10px 15px; /* Ajout d'un peu de padding latéral pour le confort */
+    background-color: #ff4c4c; /* Couleur rouge */
+    color: #fff; /* Couleur du texte */
+    border: none;
+    border-radius: 25px; /* Bords arrondis */
+    font-size: 16px; /* Augmenter légèrement la taille de la police pour la lisibilité */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ajout d'une ombre pour une légère profondeur */
+    transition: background-color 0.3s, transform 0.3s; /* Transition pour un effet au survol */
+}
+
+button:hover {
+    background-color: #e04343; /* Une teinte de rouge plus foncée au survol */
+    transform: translateY(-2px); /* Légère élévation au survol */
+}
+
+
+
+/* Styles pour l'historique */
+.historique {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--historique-bg-color);
 }

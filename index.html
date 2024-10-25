@@ -11,12 +11,14 @@
     <div class="container">
         <div class="calculator">
             <div class="theme-toggle">
-                <button onclick="toggleTheme()" id="themeButton">🌙</button>
+                <button onclick="toggleTheme()" id="themeButton" aria-label="Changer le thème">🌙</button>
             </div>
             
             <div class="display">
                 <div class="expression" id="expression"></div>
+                <label for="nombre1">Premier nombre:</label>
                 <input type="number" id="nombre1" placeholder="Premier nombre">
+                <label for="nombre2">Deuxième nombre:</label>
                 <input type="number" id="nombre2" placeholder="Deuxième nombre">
             </div>
 
@@ -41,12 +43,19 @@
             <div class="history-section">
                 <div class="history-header">
                     <h3>Historique</h3>
-                    <button onclick="clearHistory()" class="clear-history">Effacer l'historique</button>
+                    <div class="action-buttons">
+                        <button class="clear-history" id="clear-history">Effacer l'historique</button>
+                    </div>
                 </div>
-                <div id="historique" class="history-content"></div>
+                <div class="history-content" id="history">
+                    <p>2 + 2 = 4</p>
+                    <p>3 × 5 = 15</p>
+                    <!-- Ajoutez d'autres entrées d'historique ici -->
+                </div>
             </div>
-        </div>
-    </div>
+            
+            
+            
 
     <script src="script.js"></script>
 </body>
