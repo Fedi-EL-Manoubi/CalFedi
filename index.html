@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="calculatrice.png" type="image/png">
+    <title>Calculatrice Avancée</title>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <div class="theme-toggle">
+                <button onclick="toggleTheme()" id="themeButton">🌙</button>
+            </div>
+            
+            <div class="display">
+                <div class="expression" id="expression"></div>
+                <input type="number" id="nombre1" placeholder="Premier nombre">
+                <input type="number" id="nombre2" placeholder="Deuxième nombre">
+            </div>
+
+            <div class="buttons-grid">
+                <div class="buttons">
+                    <button onclick="setOperator('+')" class="operator">+</button>
+                    <button onclick="setOperator('-')" class="operator">-</button>
+                    <button onclick="setOperator('*')" class="operator">×</button>
+                    <button onclick="setOperator('/')" class="operator">÷</button>
+                </div>
+
+                <div class="action-buttons">
+                    <button onclick="calculer()" class="calculate-btn">Calculer</button>
+                    <button onclick="resetFields()" class="reset-btn">Réinitialiser</button>
+                </div>
+            </div>
+
+            <div class="result-section">
+                <p id="resultat" class="result"></p>
+            </div>
+
+            <div class="history-section">
+                <div class="history-header">
+                    <h3>Historique</h3>
+                    <button onclick="clearHistory()" class="clear-history">Effacer l'historique</button>
+                </div>
+                <div id="historique" class="history-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
