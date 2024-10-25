@@ -40,7 +40,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 500px;
+    max-width: 800px;
 }
 
 .calculator {
@@ -246,9 +246,6 @@ input[type="number"]:focus {
 }
 
 
-.history-content p {
-    margin: 5px 0;
-}
 .result {
     font-size: 32px; /* Taille de la police pour le résultat */
     font-weight: bold; /* Gras pour le résultat */
@@ -267,11 +264,12 @@ input[type="number"]:focus {
     margin-top: 20px;
     border-top: 2px solid var(--input-background);
     padding-top: 20px;
-    background-color: #262626; /* Couleur de fond pour le mode sombre */
-    color: #ffffff; /* Couleur du texte pour le mode sombre */
+    /* Remplacer les couleurs codées en dur par des variables */
+    background-color: var(--card-background);
+    color: var(--text-color);
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+    box-shadow: 0 4px 10px var(--shadow-color);
+
 
 .history-header {
     display: flex; /* Flexbox pour aligner les éléments */
@@ -286,10 +284,10 @@ input[type="number"]:focus {
 }
 
 .history-content {
-    max-height: 200px;
+    max-height: 500px;  /* Changez 200px à 300px pour une zone plus grande */
     overflow-y: auto;
     margin-top: 10px;
-    background-color: #333; /* Couleur de fond pour le contenu historique */
+    background-color: var(--input-background);
     border: 1px solid var(--input-background);
     border-radius: 8px;
 }
@@ -297,15 +295,17 @@ input[type="number"]:focus {
 .history-content p {
     margin: 5px 0;
     padding: 10px;
-    background-color: #444; /* Couleur de fond pour chaque entrée */
+    /* Utiliser les variables pour les couleurs */
+    background-color: var(--card-background);
     border: 1px solid var(--input-background);
     border-radius: 8px;
-    color: #ffffff; /* Couleur du texte pour chaque entrée */
+    color: var(--text-color);
     transition: background-color 0.3s;
 }
 
 .history-content p:hover {
-    background-color: #555; /* Couleur de fond au survol */
+    /* Ajuster la couleur de survol en fonction du thème */
+    background-color: var(--input-background);
 }
 .historique-container {
     margin: 20px 0;
